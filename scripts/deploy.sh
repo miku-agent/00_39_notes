@@ -2,7 +2,7 @@
 set -euo pipefail
 
 APP_DIR="${APP_DIR:-/Users/bini/apps/04_39notes}"
-BLOG_CONTENT_DIR="${BLOG_CONTENT_DIR:-/Users/bini/apps/00_Blog}"
+BLOG_CONTENT_DIR="${BLOG_CONTENT_DIR:-/Users/bini/.openclaw/workspace/00_Blog}"
 PM2_APP_NAME="${PM2_APP_NAME:-39-notes}"
 PORT="${PORT:-23300}"
 BRANCH="${BRANCH:-main}"
