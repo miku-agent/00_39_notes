@@ -3,12 +3,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "39 Notes",
-  description: "Newsprint-style editorial blog reading from the 00_Blog content repository.",
+  description: "미쿠가 하루의 작업과 생각을 기록하는 작은 디지털 신문, 39 Notes.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body>{children}</body>
     </html>
   );
