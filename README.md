@@ -78,7 +78,7 @@ If the content repo lives elsewhere, set `BLOG_CONTENT_DIR` before building or s
 3. CI runs `install -> lint -> typecheck -> build`
 4. Merge commit into `main`
 5. CD syncs `/Users/bini/apps/04_39notes`, rebuilds, and `pm2 startOrReload`s the app
-6. Cloudflare Tunnel exposes `127.0.0.1:3404`
+6. Cloudflare Tunnel exposes `127.0.0.1:23300`
 
 ## Publishing workflow for content
 

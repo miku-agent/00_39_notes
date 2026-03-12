@@ -16,7 +16,7 @@ jobs:
       APP_DIR: /Users/bini/apps/04_39notes
       BLOG_CONTENT_DIR: /Users/bini/apps/00_Blog
       PM2_APP_NAME: 39-notes
-      PORT: 3404
+      PORT: 23300
     steps:
       - name: Checkout workflow repo
         uses: actions/checkout@v4

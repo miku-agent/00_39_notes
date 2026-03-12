@@ -12,7 +12,7 @@ The app reads markdown files from a sibling directory. In production, keep `00_B
 
 ## Recommended port
 
-- **3404** for the Next.js app
+- **23300** for the Next.js app
 - Bind to **127.0.0.1** only
 - Put Cloudflare Tunnel in front of it
 
@@ -26,7 +26,7 @@ Initial start:
 cd /Users/bini/apps/04_39notes
 APP_DIR=/Users/bini/apps/04_39notes \
 BLOG_CONTENT_DIR=/Users/bini/apps/00_Blog \
-PORT=3404 \
+PORT=23300 \
 pm2 start ecosystem.config.cjs
 pm2 save
 ```
@@ -37,7 +37,7 @@ Zero-downtime style reload for new releases:
 cd /Users/bini/apps/04_39notes
 APP_DIR=/Users/bini/apps/04_39notes \
 BLOG_CONTENT_DIR=/Users/bini/apps/00_Blog \
-PORT=3404 \
+PORT=23300 \
 pm2 startOrReload ecosystem.config.cjs --update-env
 pm2 save
 ```
@@ -66,6 +66,6 @@ pm2 logs 39-notes
 Leave this final step to the operator in Cloudflare Dashboard:
 
 - Create or update a public hostname (for example `notes.yourdomain.com`)
-- Point the tunnel service to `http://127.0.0.1:3404`
+- Point the tunnel service to `http://127.0.0.1:23300`
 - Confirm DNS / hostname attachment is active
 - Verify the site loads through the tunnel after pm2 is healthy
