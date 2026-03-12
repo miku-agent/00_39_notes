@@ -1,0 +1,40 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: 39-notes-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    env:
+      APP_DIR: /Users/bini/apps/04_39notes
+      BLOG_CONTENT_DIR: /Users/bini/apps/00_Blog
+      PM2_APP_NAME: 39-notes
+      PORT: 3404
+    steps:
+      - name: Checkout workflow repo
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Verify deployment directories
+        run: |
+          test -d "$APP_DIR/.git"
+          test -d "$BLOG_CONTENT_DIR"
+
+      - name: Deploy with pm2
+        run: bash scripts/deploy.sh

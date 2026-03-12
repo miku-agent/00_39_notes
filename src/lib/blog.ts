@@ -5,7 +5,9 @@ import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
 
-const blogRoot = path.resolve(process.cwd(), "../00_Blog");
+const blogRoot = process.env.BLOG_CONTENT_DIR
+  ? path.resolve(process.env.BLOG_CONTENT_DIR)
+  : path.resolve(process.cwd(), "../00_Blog");
 const draftsDir = path.join(blogRoot, "drafts");
 const publishedDir = path.join(blogRoot, "published");
 
