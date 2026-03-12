@@ -4,21 +4,29 @@ set -euo pipefail
 APP_DIR="${APP_DIR:-/Users/bini/apps/04_39notes}"
 BLOG_CONTENT_DIR="${BLOG_CONTENT_DIR:-/Users/bini/apps/00_Blog}"
 PM2_APP_NAME="${PM2_APP_NAME:-39-notes}"
-PORT="${PORT:-3404}"
+PORT="${PORT:-23300}"
 BRANCH="${BRANCH:-main}"
+REPO_URL="${REPO_URL:-https://github.com/miku-agent/00_39_notes.git}"
 
 log() {
   printf '\n[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$*"
 }
 
-if [[ ! -d "$APP_DIR/.git" ]]; then
-  echo "APP_DIR does not look like a git clone: $APP_DIR" >&2
-  exit 1
-fi
-
 if [[ ! -d "$BLOG_CONTENT_DIR" ]]; then
   echo "BLOG_CONTENT_DIR not found: $BLOG_CONTENT_DIR" >&2
   echo "Clone or symlink the content repo before deploying." >&2
+  exit 1
+fi
+
+if [[ ! -d "$APP_DIR/.git" ]]; then
+  log "Bootstrapping app repo into $APP_DIR"
+  mkdir -p "$(dirname "$APP_DIR")"
+  rm -rf "$APP_DIR"
+  git clone "$REPO_URL" "$APP_DIR"
+fi
+
+if [[ ! -d "$APP_DIR/.git" ]]; then
+  echo "APP_DIR does not look like a git clone after bootstrap: $APP_DIR" >&2
   exit 1
 fi
 
