@@ -17,6 +17,7 @@ jobs:
       BLOG_CONTENT_DIR: /Users/bini/apps/00_Blog
       PM2_APP_NAME: 39-notes
       PORT: 23300
+      REPO_URL: https://github.com/miku-agent/00_39_notes.git
     steps:
       - name: Checkout workflow repo
         uses: actions/checkout@v4
@@ -30,11 +31,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: pnpm
 
-      - name: Verify deployment directories
-        run: |
-          test -d "$APP_DIR/.git"
-          test -d "$BLOG_CONTENT_DIR"
+      - name: Verify content directory
+        run: test -d "$BLOG_CONTENT_DIR"
 
       - name: Deploy with pm2
         run: bash scripts/deploy.sh
