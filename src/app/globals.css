@@ -28,7 +28,9 @@ body {
     repeating-linear-gradient(0deg, rgba(17, 17, 17, 0.028) 0, rgba(17, 17, 17, 0.028) 1px, transparent 1px, transparent 32px),
     var(--paper);
   color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
 }
 
 body::before {
@@ -74,6 +76,7 @@ p {
 
 .wordmark {
   display: inline-block;
+  font-family: var(--font-title), Arial, Helvetica, sans-serif;
   font-size: clamp(3rem, 8vw, 6rem);
   line-height: 0.93;
   font-weight: 700;
@@ -192,7 +195,8 @@ p {
 .empty-state-side p,
 .recent-empty-copy p {
   font-size: 1.08rem;
-  line-height: 1.8;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
 }
 
 .hero-actions {
@@ -279,7 +283,9 @@ p {
 .story-row h3,
 .empty-state h2 {
   margin: 0;
+  font-family: var(--font-title), Arial, Helvetica, sans-serif;
   line-height: 1.02;
+  letter-spacing: -0.03em;
 }
 
 .featured h2,
@@ -467,6 +473,24 @@ p {
   padding-left: 1rem;
   border-left: 4px solid var(--accent);
   color: var(--muted);
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-code), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+code {
+  font-size: 0.95em;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem 1.1rem;
+  border: 1.5px solid rgba(17, 17, 17, 0.16);
+  background: rgba(255, 255, 255, 0.62);
 }
 
 .article-tags {
