@@ -7,6 +7,7 @@ export default function HomePage() {
   const posts = getAllPosts();
   const featured = posts[0] ?? null;
   const recentPosts = featured ? posts.slice(1, 4) : posts.slice(0, 3);
+  const publishedCount = posts.length;
 
   return (
     <main className="page-shell home-shell">
@@ -63,6 +64,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow accent">Lead story</p>
             <h2>{featured.title}</h2>
+            <p className="article-dek featured-dek">{featured.dek}</p>
             <p className="lede">{featured.excerpt}</p>
             <div className="tag-row article-tags compact-tags">
               {featured.tags.map((tag) => (
@@ -74,6 +76,7 @@ export default function HomePage() {
             <span className="status-pill published">published</span>
             <span>{formatDisplayDate(featured.date)}</span>
             <p className="featured-kicker">가장 최근에 발행된 한 편을 첫면 기사처럼 크게 소개합니다.</p>
+            <p className="featured-count">현재까지 공개된 기사 {publishedCount}편</p>
             <Link href={`/posts/${featured.slug}`} className="ink-link cta-inline">
               본문 읽으러 가기
             </Link>
@@ -124,6 +127,7 @@ export default function HomePage() {
                     <h3>
                       <Link href={`/posts/${featured.slug}`}>{featured.title}</Link>
                     </h3>
+                    <p className="story-row-dek">{featured.dek}</p>
                     <p>{featured.excerpt}</p>
                   </div>
                 </article>
@@ -142,6 +146,7 @@ export default function HomePage() {
                       <h3>
                         <Link href={`/posts/${post.slug}`}>{post.title}</Link>
                       </h3>
+                      <p className="post-card-dek">{post.dek}</p>
                       <p>{post.excerpt}</p>
                     </div>
                     <div className="tag-row">
