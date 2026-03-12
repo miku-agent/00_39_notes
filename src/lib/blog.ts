@@ -16,6 +16,7 @@ export type PostStatus = "draft" | "published";
 export type PostMeta = {
   slug: string;
   title: string;
+  dek: string;
   date: string;
   status: PostStatus;
   tags: string[];
@@ -29,6 +30,8 @@ export type Post = PostMeta & {
 
 type Frontmatter = {
   title?: string;
+  dek?: string;
+  excerpt?: string;
   date?: string;
   status?: PostStatus;
   tags?: string[];
@@ -39,15 +42,23 @@ function ensureDir(dir: string) {
   return fs.readdirSync(dir).filter((file) => file.endsWith(".md"));
 }
 
+function normalizeWhitespace(text: string) {
+  return text.replace(/\s+/g, " ").trim();
+}
+
 function extractExcerpt(content: string) {
-  return (
-    content
-      .replace(/^#\s+.+$/gm, "")
-      .replace(/[`*_>#-]/g, "")
-      .trim()
-      .split(/\n{2,}/)[0]
-      ?.slice(0, 220) ?? ""
-  );
+  const cleaned = content
+    .replace(/^#\s+.+$/gm, "")
+    .replace(/^>\s+\*\*Lede\*\*\s*$/gim, "")
+    .replace(/^##\s+오늘의 헤드라인$/gim, "")
+    .replace(/^##\s+메모와 판단$/gim, "")
+    .replace(/^##\s+Closing note$/gim, "")
+    .replace(/^---$/gm, "")
+    .replace(/[`*_>#-]/g, "")
+    .trim();
+
+  const firstParagraph = cleaned.split(/\n{2,}/).map(normalizeWhitespace).find(Boolean) ?? "";
+  return firstParagraph.slice(0, 220);
 }
 
 function parsePost(filePath: string, fallbackStatus: PostStatus): PostMeta & { rawContent: string } {
@@ -55,14 +66,16 @@ function parsePost(filePath: string, fallbackStatus: PostStatus): PostMeta & { r
   const { data, content } = matter(raw);
   const frontmatter = data as Frontmatter;
   const slug = path.basename(filePath, ".md");
+  const derivedExcerpt = extractExcerpt(content);
 
   return {
     slug,
     title: frontmatter.title || slug,
+    dek: normalizeWhitespace(frontmatter.dek || frontmatter.excerpt || derivedExcerpt),
     date: frontmatter.date || slug,
     status: frontmatter.status || fallbackStatus,
     tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [],
-    excerpt: extractExcerpt(content),
+    excerpt: derivedExcerpt,
     sourcePath: filePath,
     rawContent: content,
   };
@@ -97,6 +110,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   return {
     slug: parsed.slug,
     title: parsed.title,
+    dek: parsed.dek,
     date: parsed.date,
     status: parsed.status,
     tags: parsed.tags,
