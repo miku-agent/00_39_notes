@@ -3,6 +3,8 @@ import { SiteHeader } from "@/components/site-header";
 import { formatDisplayDate } from "@/lib/format";
 import { getAllPosts } from "@/lib/blog";
 
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
   const posts = getAllPosts();
   const featured = posts[0] ?? null;

@@ -1,12 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
-import { getAllPosts, getPostBySlug, getPostSlugs } from "@/lib/blog";
+import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { formatDisplayDate } from "@/lib/format";
 
-export async function generateStaticParams() {
-  return getPostSlugs().map((slug) => ({ slug }));
-}
+export const dynamic = "force-dynamic";
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
