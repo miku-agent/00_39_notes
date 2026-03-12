@@ -2,7 +2,7 @@ const path = require('node:path');
 
 const cwd = process.env.APP_DIR || '/Users/bini/apps/04_39notes';
 const port = process.env.PORT || '23300';
-const blogContentDir = process.env.BLOG_CONTENT_DIR || path.resolve(cwd, '../00_Blog');
+const blogContentDir = process.env.BLOG_CONTENT_DIR || '/Users/bini/.openclaw/workspace/00_Blog';
 
 module.exports = {
   apps: [
