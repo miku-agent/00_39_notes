@@ -68,30 +68,30 @@ function parsePost(filePath: string, fallbackStatus: PostStatus): PostMeta & { r
   };
 }
 
+function stripRawContent<T extends { rawContent: string }>(posts: T[]) {
+  return posts.map((post) => {
+    const { rawContent, ...meta } = post;
+    void rawContent;
+    return meta;
+  });
+}
+
 export function getAllPosts(): PostMeta[] {
-  const drafts = ensureDir(draftsDir).map((file) => parsePost(path.join(draftsDir, file), "draft"));
   const published = ensureDir(publishedDir).map((file) => parsePost(path.join(publishedDir, file), "published"));
 
-  return [...published, ...drafts]
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .map((post) => {
-      const { rawContent, ...meta } = post;
-      void rawContent;
-      return meta;
-    });
+  return stripRawContent(published).sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function getDraftPosts(): PostMeta[] {
+  const drafts = ensureDir(draftsDir).map((file) => parsePost(path.join(draftsDir, file), "draft"));
+  return stripRawContent(drafts).sort((a, b) => b.date.localeCompare(a.date));
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const candidatePaths = [
-    path.join(publishedDir, `${slug}.md`),
-    path.join(draftsDir, `${slug}.md`),
-  ];
+  const filePath = path.join(publishedDir, `${slug}.md`);
+  if (!fs.existsSync(filePath)) return null;
 
-  const filePath = candidatePaths.find((candidate) => fs.existsSync(candidate));
-  if (!filePath) return null;
-
-  const fallbackStatus: PostStatus = filePath.includes(`${path.sep}published${path.sep}`) ? "published" : "draft";
-  const parsed = parsePost(filePath, fallbackStatus);
+  const parsed = parsePost(filePath, "published");
   const processed = await remark().use(remarkGfm).use(remarkHtml).process(parsed.rawContent);
 
   return {
@@ -111,11 +111,8 @@ export function getPostSlugs() {
 }
 
 export function getStatusCounts() {
-  return getAllPosts().reduce(
-    (acc, post) => {
-      acc[post.status] += 1;
-      return acc;
-    },
-    { draft: 0, published: 0 },
-  );
+  return {
+    published: getAllPosts().length,
+    draft: getDraftPosts().length,
+  };
 }

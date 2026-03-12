@@ -17,8 +17,8 @@ export default function HomePage() {
           <p className="eyebrow accent">FIELD NOTES / BLACK INK EDITION</p>
           <h1 className="hero-title">A stark editorial front-end for the living archive in 00_Blog.</h1>
           <p className="hero-copy">
-            39 Notes renders markdown from the workspace content repository and makes the editorial state visible at a glance.
-            Drafts stay visible as in-progress notes. Published entries read like the finished morning edition.
+            39 Notes renders markdown from the workspace content repository as a quiet public newspaper.
+            Only published entries appear on the front page, while drafts remain backstage in the writing workflow.
           </p>
         </div>
         <div className="stats-grid">
@@ -61,9 +61,9 @@ export default function HomePage() {
       <section className="panel section-heading">
         <div>
           <p className="eyebrow">Archive</p>
-          <h2>All entries</h2>
+          <h2>Published entries</h2>
         </div>
-        <p className="muted">Draft and published states are intentionally shown together so the writing pipeline stays legible.</p>
+        <p className="muted">Drafts stay in the private writing pipeline and are not shown on the public archive.</p>
       </section>
 
       <section className="post-grid">
