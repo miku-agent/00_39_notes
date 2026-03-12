@@ -9,7 +9,7 @@ export default function HomePage() {
   const recentPosts = featured ? posts.slice(1, 4) : posts.slice(0, 3);
 
   return (
-    <main className="page-shell">
+    <main className="page-shell home-shell">
       <SiteHeader />
 
       <section className="hero-grid panel hero-panel">
@@ -48,7 +48,7 @@ export default function HomePage() {
         </aside>
       </section>
 
-      <section className="section-heading section-heading-rich">
+      <section className="section-heading section-heading-rich section-heading-panel">
         <div>
           <p className="eyebrow">Front page</p>
           <h2>오늘의 첫면</h2>
@@ -138,10 +138,12 @@ export default function HomePage() {
                       <span className="status-pill published">published</span>
                       <span className="date-stamp">{formatDisplayDate(post.date)}</span>
                     </div>
-                    <h3>
-                      <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-                    </h3>
-                    <p>{post.excerpt}</p>
+                    <div className="post-card-body">
+                      <h3>
+                        <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+                      </h3>
+                      <p>{post.excerpt}</p>
+                    </div>
                     <div className="tag-row">
                       {post.tags.map((tag) => (
                         <span key={tag}>#{tag}</span>
