@@ -8,7 +8,7 @@ export function SiteHeader() {
         <Link href="/" className="wordmark">
           39 Notes
         </Link>
-        <p className="header-description">미쿠의 작업과 생각을 담아 두는 작은 디지털 신문</p>
+        <p className="header-description">짧은 작업 노트와 생각을 차분하게 쌓아 가는 작은 public archive</p>
         <nav className="site-nav" aria-label="Primary">
           <Link href="/" className="site-nav-link">
             Home

@@ -10,6 +10,7 @@ export default function HomePage() {
   const featured = posts[0] ?? null;
   const recentPosts = featured ? posts.slice(1, 4) : posts.slice(0, 3);
   const publishedCount = posts.length;
+  const latestDateLabel = featured ? formatDisplayDate(featured.date) : "Preparing first post";
 
   return (
     <main className="page-shell home-shell">
@@ -18,11 +19,18 @@ export default function HomePage() {
       <section className="hero-grid panel hero-panel hero-panel-minimal">
         <div className="hero-copy-block hero-copy-block-pointed">
           <p className="eyebrow accent">39 Notes</p>
-          <h1 className="hero-title">짧게 남기는 작업 노트</h1>
-          <p className="hero-copy">하루의 작업과 생각을 조용하게 기록합니다.</p>
+          <h1 className="hero-title">짧게 읽히는 작업의 흔적</h1>
+          <p className="hero-copy">
+            길게 설명하기보다, 작업을 마친 뒤에도 다시 읽을 만한 생각만 짧고 또렷하게 남깁니다.
+          </p>
+          <div className="hero-proof-list" aria-label="What 39 Notes offers">
+            <span>짧은 글</span>
+            <span>조용한 아카이브</span>
+            <span>계속 쌓이는 thread</span>
+          </div>
           <div className="hero-actions hero-actions-minimal">
             <Link href={featured ? `/posts/${featured.slug}` : "#recent-stories"} className="cta-link cta-link-primary">
-              {featured ? "최근 글 읽기" : "글 보러 가기"}
+              {featured ? "대표 글 읽기" : "글 보러 가기"}
             </Link>
             <Link href="/archive" className="cta-link">
               아카이브 보기
@@ -30,11 +38,33 @@ export default function HomePage() {
           </div>
         </div>
 
-        <aside className="hero-side-column hero-side-column-minimal hero-side-inline hero-side-inline-pointed">
+        <aside className="hero-side-column hero-side-column-minimal hero-side-inline hero-side-inline-pointed hero-side-inline-extended">
           <span className="stat-label">Published</span>
           <strong>{publishedCount}</strong>
-          <p>{featured ? formatDisplayDate(featured.date) : "Preparing first post"}</p>
+          <p>{latestDateLabel}</p>
+          <p className="hero-side-note">새 글이 발행될 때마다 홈과 archive가 함께 갱신됩니다.</p>
         </aside>
+      </section>
+
+      <section className="overview-strip panel-subtle overview-strip-compact">
+        <div>
+          <span className="stat-label">Why read</span>
+          <strong>짧은 문장으로 남긴 작업의 결</strong>
+        </div>
+        <div className="overview-strip-grid">
+          <div>
+            <span className="stat-label">Point</span>
+            <p>무엇을 만들고 생각했는지 빠르게 파악할 수 있어요.</p>
+          </div>
+          <div>
+            <span className="stat-label">Hook</span>
+            <p>대표 글 하나로 현재 톤과 시선을 먼저 확인할 수 있어요.</p>
+          </div>
+          <div>
+            <span className="stat-label">Return</span>
+            <p>글이 쌓일수록 archive에서 하나의 thread처럼 이어집니다.</p>
+          </div>
+        </div>
       </section>
 
       <section className="section-heading section-heading-rich section-heading-panel">
@@ -52,6 +82,7 @@ export default function HomePage() {
             <h2>{featured.title}</h2>
             <p className="article-dek featured-dek featured-dek-pointed">{featured.dek}</p>
             <p className="lede">{featured.excerpt}</p>
+            <p className="featured-read-reason">처음 방문했다면, 이 글 한 편으로 39 Notes의 톤과 시선을 가장 빠르게 느낄 수 있어요.</p>
             {featured.tags.length > 0 ? (
               <div className="tag-row article-tags compact-tags">
                 {featured.tags.map((tag) => (
@@ -65,8 +96,9 @@ export default function HomePage() {
             <span>{formatDisplayDate(featured.date)}</span>
             <p className="featured-kicker">가장 최근에 발행된 글입니다.</p>
             <p className="featured-count">공개된 글 {publishedCount}편</p>
+            <p className="featured-proof">처음 한 편, 그 다음엔 archive에서 이어 읽기.</p>
             <Link href={`/posts/${featured.slug}`} className="ink-link cta-inline featured-inline-link">
-              읽기
+              지금 읽기
             </Link>
           </div>
         </section>
@@ -99,7 +131,7 @@ export default function HomePage() {
             <p className="eyebrow">Recent stories</p>
             <h2>최근 발행 글</h2>
           </div>
-          <p className="muted">최근 공개된 글을 시간순으로 모아둔 목록입니다.</p>
+          <p className="muted">최신 한 편에서 시작하고, 이어지는 글은 archive에서 thread처럼 따라갈 수 있어요.</p>
         </div>
 
         {posts.length > 0 ? (
