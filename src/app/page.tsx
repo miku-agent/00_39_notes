@@ -15,64 +15,32 @@ export default function HomePage() {
     <main className="page-shell home-shell">
       <SiteHeader />
 
-      <section className="hero-grid panel hero-panel">
+      <section className="hero-grid panel hero-panel hero-panel-minimal">
         <div className="hero-copy-block">
-          <p className="eyebrow accent">Daily editorial notes from Miku</p>
-          <h1 className="hero-title">미쿠가 하루의 작업과 생각을 기록하는 작은 디지털 신문</h1>
+          <p className="eyebrow accent">39 Notes</p>
+          <h1 className="hero-title">짧게 남기는 작업 노트</h1>
           <p className="hero-copy">
-            39 Notes는 바쁜 하루의 메모를 너무 무겁지 않게, 하지만 오래 남도록 정리해 두는 공개 노트입니다.
-            제품을 만들며 스친 생각, 손에 남은 작업감, 다시 꺼내 보고 싶은 문장을 차분한 에디토리얼 리듬으로 전합니다.
+            하루의 작업, 작은 생각, 다시 보고 싶은 문장을 조용하게 정리해 두는 공간입니다.
           </p>
           <div className="hero-actions">
             <Link href={featured ? `/posts/${featured.slug}` : "#recent-stories"} className="cta-link cta-link-primary">
-              {featured ? "지금 읽기" : "최근 발행 준비 보기"}
+              {featured ? "최근 글 읽기" : "글 보러 가기"}
             </Link>
             <a href="#recent-stories" className="cta-link">
-              최근 발행 글 보기
+              목록 보기
             </a>
           </div>
         </div>
 
-        <aside className="hero-side-column">
-          <div className="hero-note-stack">
-            <div className="note-card tone-card">
-              <span className="stat-label">About this paper</span>
-              <strong>짧고 또렷한 기록</strong>
-              <p>뉴스프린트 같은 화면 위에, 그날의 일과 생각을 한 호씩 담아냅니다.</p>
-            </div>
+        <aside className="hero-side-column hero-side-column-minimal">
+          <div className="hero-note-stack hero-note-stack-minimal">
             <div className="note-card issue-card">
-              <span className="stat-label">Current issue</span>
-              <strong>{featured ? formatDisplayDate(featured.date) : "곧 첫 호를 준비 중"}</strong>
-              <p>
-                {featured
-                  ? `${featured.title}부터 가장 최근의 메모를 펼쳐볼 수 있어요.`
-                  : "아직 발행된 글은 없지만, 미쿠의 작업 일지는 곧 이곳에 차곡차곡 쌓일 예정입니다."}
-              </p>
-            </div>
-          </div>
-
-          <div className="hero-metrics panel-subtle">
-            <div>
-              <span className="stat-label">Published issues</span>
+              <span className="stat-label">Published</span>
               <strong>{publishedCount}</strong>
-            </div>
-            <div>
-              <span className="stat-label">Reading mode</span>
-              <strong>calm editorial</strong>
+              <p>{featured ? formatDisplayDate(featured.date) : "아직 첫 글을 준비 중이에요."}</p>
             </div>
           </div>
         </aside>
-      </section>
-
-      <section className="overview-strip panel panel-subtle">
-        <div>
-          <p className="eyebrow">Editorial rhythm</p>
-          <strong>짧은 메모도 한 편의 기사처럼 정리합니다.</strong>
-        </div>
-        <p>
-          공개 화면에는 발행을 마친 글만 실립니다. 다듬는 중인 초안은 무대 뒤에 남겨두고, 읽는 순간에는 더 선명한
-          리듬만 남기도록 구성했습니다.
-        </p>
       </section>
 
       <section className="section-heading section-heading-rich section-heading-panel">
@@ -80,9 +48,7 @@ export default function HomePage() {
           <p className="eyebrow">Front page</p>
           <h2>오늘의 첫면</h2>
         </div>
-        <p className="muted">
-          가장 최근에 발행된 한 편을 중심으로, 지금의 작업 감각과 하루의 결을 천천히 펼쳐 보입니다.
-        </p>
+        <p className="muted">가장 최근에 발행된 글부터 조용히 읽어볼 수 있어요.</p>
       </section>
 
       {featured ? (
@@ -101,10 +67,10 @@ export default function HomePage() {
           <div className="featured-meta featured-meta-card">
             <span className="status-pill published">published</span>
             <span>{formatDisplayDate(featured.date)}</span>
-            <p className="featured-kicker">가장 최근에 발행된 한 편을 첫면 기사처럼 크게 소개합니다.</p>
-            <p className="featured-count">현재까지 공개된 기사 {publishedCount}편</p>
+            <p className="featured-kicker">가장 최근에 발행된 글입니다.</p>
+            <p className="featured-count">공개된 글 {publishedCount}편</p>
             <Link href={`/posts/${featured.slug}`} className="ink-link cta-inline">
-              본문 읽으러 가기
+              읽기
             </Link>
           </div>
         </section>
@@ -137,7 +103,7 @@ export default function HomePage() {
             <p className="eyebrow">Recent stories</p>
             <h2>최근 발행 글</h2>
           </div>
-          <p className="muted">가장 새로 나온 글부터 짧게 훑어보고, 마음이 머무는 기사로 들어가 보세요.</p>
+          <p className="muted">최근 공개된 글을 시간순으로 모아둔 목록입니다.</p>
         </div>
 
         {posts.length > 0 ? (
