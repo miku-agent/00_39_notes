@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_KR, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
-const titleFont = IBM_Plex_Sans_KR({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-title",
-  display: "swap",
-});
 
 const bodyFont = Inter({
   subsets: ["latin"],
@@ -28,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ko" className={`${titleFont.variable} ${bodyFont.variable} ${codeFont.variable}`}>
+    <html lang="ko" className={`${bodyFont.variable} ${codeFont.variable}`}>
       <body>{children}</body>
     </html>
   );
