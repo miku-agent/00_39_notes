@@ -120,6 +120,12 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   };
 }
 
+export async function getAllPostsWithContent(): Promise<Post[]> {
+  const posts = getAllPosts();
+  const loaded = await Promise.all(posts.map((post) => getPostBySlug(post.slug)));
+  return loaded.filter((post): post is Post => Boolean(post));
+}
+
 export function getPostSlugs() {
   return getAllPosts().map((post) => post.slug);
 }

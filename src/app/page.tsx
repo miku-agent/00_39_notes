@@ -24,6 +24,9 @@ export default function HomePage() {
             <Link href={featured ? `/posts/${featured.slug}` : "#recent-stories"} className="cta-link cta-link-primary">
               {featured ? "최근 글 읽기" : "글 보러 가기"}
             </Link>
+            <Link href="/archive" className="cta-link">
+              아카이브 보기
+            </Link>
           </div>
         </div>
 
