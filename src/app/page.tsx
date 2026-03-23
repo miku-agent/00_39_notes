@@ -19,36 +19,22 @@ export default function HomePage() {
         <div className="hero-copy-block">
           <p className="eyebrow accent">39 Notes</p>
           <h1 className="hero-title">짧게 남기는 작업 노트</h1>
-          <p className="hero-copy">
-            하루의 작업, 작은 생각, 다시 보고 싶은 문장을 조용하게 정리해 두는 공간입니다.
-          </p>
-          <div className="hero-actions">
-            <Link href={featured ? `/posts/${featured.slug}` : "#recent-stories"} className="cta-link cta-link-primary">
-              {featured ? "최근 글 읽기" : "글 보러 가기"}
-            </Link>
-            <a href="#recent-stories" className="cta-link">
-              목록 보기
-            </a>
-          </div>
+          <p className="hero-copy">하루의 작업과 생각을 조용하게 기록합니다.</p>
         </div>
 
-        <aside className="hero-side-column hero-side-column-minimal">
-          <div className="hero-note-stack hero-note-stack-minimal">
-            <div className="note-card issue-card">
-              <span className="stat-label">Published</span>
-              <strong>{publishedCount}</strong>
-              <p>{featured ? formatDisplayDate(featured.date) : "아직 첫 글을 준비 중이에요."}</p>
-            </div>
-          </div>
+        <aside className="hero-side-column hero-side-column-minimal hero-side-inline">
+          <span className="stat-label">Published</span>
+          <strong>{publishedCount}</strong>
+          <p>{featured ? formatDisplayDate(featured.date) : "Preparing first post"}</p>
         </aside>
       </section>
 
       <section className="section-heading section-heading-rich section-heading-panel">
         <div>
-          <p className="eyebrow">Front page</p>
-          <h2>오늘의 첫면</h2>
+          <p className="eyebrow">Latest</p>
+          <h2>가장 최근 글</h2>
         </div>
-        <p className="muted">가장 최근에 발행된 글부터 조용히 읽어볼 수 있어요.</p>
+        <p className="muted">최근 발행된 글부터 차례대로 볼 수 있어요.</p>
       </section>
 
       {featured ? (
@@ -58,11 +44,13 @@ export default function HomePage() {
             <h2>{featured.title}</h2>
             <p className="article-dek featured-dek">{featured.dek}</p>
             <p className="lede">{featured.excerpt}</p>
-            <div className="tag-row article-tags compact-tags">
-              {featured.tags.map((tag) => (
-                <span key={tag}>#{tag}</span>
-              ))}
-            </div>
+            {featured.tags.length > 0 ? (
+              <div className="tag-row article-tags compact-tags">
+                {featured.tags.map((tag) => (
+                  <span key={tag}>#{tag}</span>
+                ))}
+              </div>
+            ) : null}
           </div>
           <div className="featured-meta featured-meta-card">
             <span className="status-pill published">published</span>
@@ -141,11 +129,13 @@ export default function HomePage() {
                       <p className="post-card-dek">{post.dek}</p>
                       <p>{post.excerpt}</p>
                     </div>
-                    <div className="tag-row">
-                      {post.tags.map((tag) => (
-                        <span key={tag}>#{tag}</span>
-                      ))}
-                    </div>
+                    {post.tags.length > 0 ? (
+                      <div className="tag-row">
+                        {post.tags.map((tag) => (
+                          <span key={tag}>#{tag}</span>
+                        ))}
+                      </div>
+                    ) : null}
                   </article>
                 ))}
               </div>
