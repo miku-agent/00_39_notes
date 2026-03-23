@@ -25,17 +25,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <article className="article panel">
         <div className="article-header-block">
           <div className="article-meta article-meta-grid">
-            <span className="status-pill published">published</span>
+            <span className="status-pill published">발행</span>
             <span>{formatDisplayDate(post.date)}</span>
             <span className="article-meta-slash" aria-hidden="true">
               /
             </span>
-            <span>{post.tags.length > 0 ? `${post.tags.length} tags` : "single issue"}</span>
+            <span>{post.tags.length > 0 ? `태그 ${post.tags.length}` : "단일 기록"}</span>
           </div>
 
           <div className="article-title-row article-title-row-minimal article-title-row-pointed">
             <div>
-              <p className="eyebrow accent">Story</p>
+              <p className="eyebrow accent">기록</p>
               <h1>{post.title}</h1>
             </div>
           </div>
@@ -60,13 +60,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <div className="article-nav-links">
           {newerPost ? (
             <Link href={`/posts/${newerPost.slug}`} className="article-nav-card">
-              <span className="stat-label">Newer</span>
+              <span className="stat-label">더 최근 글</span>
               <strong>{newerPost.title}</strong>
             </Link>
           ) : null}
           {olderPost ? (
             <Link href={`/posts/${olderPost.slug}`} className="article-nav-card">
-              <span className="stat-label">Older</span>
+              <span className="stat-label">이전 글</span>
               <strong>{olderPost.title}</strong>
             </Link>
           ) : null}
