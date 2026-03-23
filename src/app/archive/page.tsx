@@ -15,23 +15,21 @@ export default async function ArchivePage() {
       <section className="archive-hero panel">
         <div>
           <p className="eyebrow accent">Archive</p>
-          <h1>글 목록과 thread view</h1>
+          <h1>조용히 이어 읽는 글의 흐름</h1>
         </div>
-        <p className="archive-hero-copy">
-          빠르게 훑어보는 목록과, 아래로 이어서 읽는 thread 형식을 한 페이지에 담았습니다.
-        </p>
+        <p className="archive-hero-copy">목록으로 훑어보고, 아래에서는 문장을 차례대로 이어 읽을 수 있어요.</p>
       </section>
 
       <section className="archive-layout">
         <aside className="archive-index panel-subtle">
           <div className="section-heading section-heading-panel archive-index-heading">
             <div>
-              <p className="eyebrow">Index</p>
-              <h2>지금 읽을 글</h2>
+              <p className="eyebrow">목록</p>
+              <h2>지금 놓인 글</h2>
             </div>
-            <p className="muted">제목을 누르면 해당 thread 위치로 바로 이동해요.</p>
+            <p className="muted">제목을 누르면 아래 본문 위치로 바로 이동해요.</p>
           </div>
-          <p className="archive-index-summary">latest first · {posts.length} issues</p>
+          <p className="archive-index-summary">최신순 · 글 {posts.length}편</p>
 
           <div className="archive-index-list">
             {posts.map((post, index) => (
@@ -49,10 +47,10 @@ export default async function ArchivePage() {
         <section className="archive-thread">
           <div className="section-heading section-heading-panel archive-thread-heading">
             <div>
-              <p className="eyebrow accent">Thread</p>
-              <h2>쭉 읽는 페이지</h2>
+              <p className="eyebrow accent">흐름</p>
+              <h2>차례대로 읽는 본문</h2>
             </div>
-            <p className="muted">각 글의 원문을 순서대로 이어서 볼 수 있어요.</p>
+            <p className="muted">각 글의 원문을 순서대로 이어 볼 수 있어요.</p>
           </div>
 
           <div className="thread-list">
@@ -60,17 +58,17 @@ export default async function ArchivePage() {
               <article id={`issue-${post.slug}`} key={post.slug} className="thread-card panel">
                 <div className="thread-card-head">
                   <div className="thread-kicker">
-                    <span className="status-pill published">issue {String(index + 1).padStart(2, "0")}</span>
+                    <span className="status-pill published">글 {String(index + 1).padStart(2, "0")}</span>
                     <span className="date-stamp">{formatDisplayDate(post.date)}</span>
                   </div>
                   <Link href={`/posts/${post.slug}`} className="ink-link thread-direct-link">
-                    단독 페이지 보기
+                    이 글만 보기
                   </Link>
                 </div>
 
                 <div className="thread-title-row">
                   <div>
-                    <p className="eyebrow accent">Story</p>
+                    <p className="eyebrow accent">기록</p>
                     <h2>{post.title}</h2>
                   </div>
                 </div>
