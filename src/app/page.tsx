@@ -10,7 +10,7 @@ export default function HomePage() {
   const featured = posts[0] ?? null;
   const recentPosts = featured ? posts.slice(1, 4) : posts.slice(0, 3);
   const publishedCount = posts.length;
-  const latestDateLabel = featured ? formatDisplayDate(featured.date) : "Preparing first post";
+  const latestDateLabel = featured ? formatDisplayDate(featured.date) : "첫 문장을 준비 중";
 
   return (
     <main className="page-shell home-shell">
@@ -19,14 +19,14 @@ export default function HomePage() {
       <section className="hero-grid panel hero-panel hero-panel-minimal">
         <div className="hero-copy-block hero-copy-block-pointed">
           <p className="eyebrow accent">39 Notes</p>
-          <h1 className="hero-title">짧게 읽히는 작업의 흔적</h1>
+          <h1 className="hero-title">푸른빛처럼 남는 짧은 문장</h1>
           <p className="hero-copy">
-            길게 설명하기보다, 작업을 마친 뒤에도 다시 읽을 만한 생각만 짧고 또렷하게 남깁니다.
+            오래 설명하지 않아도 마음에 남는 생각을, 맑고 가벼운 문장으로 천천히 쌓아 둡니다.
           </p>
-          <div className="hero-proof-list" aria-label="What 39 Notes offers">
-            <span>짧은 글</span>
-            <span>조용한 아카이브</span>
-            <span>계속 쌓이는 thread</span>
+          <div className="hero-proof-list" aria-label="39 Notes의 특징">
+            <span>짧은 문장</span>
+            <span>조용한 기록</span>
+            <span>이어 읽는 흐름</span>
           </div>
           <div className="hero-actions hero-actions-minimal">
             <Link href={featured ? `/posts/${featured.slug}` : "#recent-stories"} className="cta-link cta-link-primary">
@@ -39,50 +39,50 @@ export default function HomePage() {
         </div>
 
         <aside className="hero-side-column hero-side-column-minimal hero-side-inline hero-side-inline-pointed hero-side-inline-extended">
-          <span className="stat-label">Published</span>
+          <span className="stat-label">발행</span>
           <strong>{publishedCount}</strong>
           <p>{latestDateLabel}</p>
-          <p className="hero-side-note">새 글이 발행될 때마다 홈과 archive가 함께 갱신됩니다.</p>
+          <p className="hero-side-note">새 글이 놓일 때마다 홈과 아카이브에 같은 결이 한 장씩 더해집니다.</p>
         </aside>
       </section>
 
       <section className="overview-strip panel-subtle overview-strip-compact">
         <div>
-          <span className="stat-label">Why read</span>
-          <strong>짧은 문장으로 남긴 작업의 결</strong>
+          <span className="stat-label">이곳의 결</span>
+          <strong>짧고 맑은 문장으로 남긴 하루의 파편</strong>
         </div>
         <div className="overview-strip-grid">
           <div>
-            <span className="stat-label">Point</span>
-            <p>무엇을 만들고 생각했는지 빠르게 파악할 수 있어요.</p>
+            <span className="stat-label">한눈에</span>
+            <p>무엇을 만들고 생각했는지 조용히 훑어볼 수 있어요.</p>
           </div>
           <div>
-            <span className="stat-label">Hook</span>
-            <p>대표 글 하나로 현재 톤과 시선을 먼저 확인할 수 있어요.</p>
+            <span className="stat-label">먼저 읽기</span>
+            <p>대표 글 한 편으로 지금의 온도와 시선을 먼저 만날 수 있어요.</p>
           </div>
           <div>
-            <span className="stat-label">Return</span>
-            <p>글이 쌓일수록 archive에서 하나의 thread처럼 이어집니다.</p>
+            <span className="stat-label">다시 오기</span>
+            <p>문장이 쌓일수록 아카이브에서 하나의 흐름처럼 이어집니다.</p>
           </div>
         </div>
       </section>
 
       <section className="section-heading section-heading-rich section-heading-panel">
         <div>
-          <p className="eyebrow">Latest</p>
-          <h2>가장 최근 글</h2>
+          <p className="eyebrow">지금의 글</p>
+          <h2>가장 최근에 놓인 문장</h2>
         </div>
-        <p className="muted">최근 발행된 글부터 차례대로 볼 수 있어요.</p>
+        <p className="muted">가장 가까운 생각부터 차례대로 읽을 수 있어요.</p>
       </section>
 
       {featured ? (
         <section className="featured panel featured-story featured-story-pointed featured-story-emphasis">
           <div className="featured-copy">
-            <p className="eyebrow accent">Lead story</p>
+            <p className="eyebrow accent">먼저 읽는 글</p>
             <h2>{featured.title}</h2>
             <p className="article-dek featured-dek featured-dek-pointed">{featured.dek}</p>
             <p className="lede">{featured.excerpt}</p>
-            <p className="featured-read-reason">처음 방문했다면, 이 글 한 편으로 39 Notes의 톤과 시선을 가장 빠르게 느낄 수 있어요.</p>
+            <p className="featured-read-reason">처음 들어왔다면, 이 한 편에서 39 Notes의 맑은 결을 가장 먼저 만날 수 있어요.</p>
             {featured.tags.length > 0 ? (
               <div className="tag-row article-tags compact-tags">
                 {featured.tags.map((tag) => (
@@ -92,11 +92,11 @@ export default function HomePage() {
             ) : null}
           </div>
           <div className="featured-meta featured-meta-card featured-meta-card-emphasis">
-            <span className="status-pill published">published</span>
+            <span className="status-pill published">발행</span>
             <span>{formatDisplayDate(featured.date)}</span>
-            <p className="featured-kicker">가장 최근에 발행된 글입니다.</p>
+            <p className="featured-kicker">가장 최근에 놓인 글입니다.</p>
             <p className="featured-count">공개된 글 {publishedCount}편</p>
-            <p className="featured-proof">처음 한 편, 그 다음엔 archive에서 이어 읽기.</p>
+            <p className="featured-proof">처음 한 편, 그 다음엔 아카이브에서 조용히 이어 읽기.</p>
             <Link href={`/posts/${featured.slug}`} className="ink-link cta-inline featured-inline-link">
               지금 읽기
             </Link>
@@ -105,17 +105,17 @@ export default function HomePage() {
       ) : (
         <section className="panel empty-state">
           <div>
-            <p className="eyebrow accent">No issue yet</p>
-            <h2>첫 발행을 준비하고 있어요</h2>
+            <p className="eyebrow accent">아직 첫 글 전</p>
+            <h2>첫 문장을 고르고 있어요</h2>
             <p className="lede">
-              아직 공개된 글은 없지만, 39 Notes는 이미 하루치 메모를 모으는 중입니다. 첫 호가 발행되면 이 자리에서
+              아직 공개된 글은 없지만, 39 Notes는 이미 하루의 메모를 모으는 중입니다. 첫 문장이 놓이면 이 자리에서
               가장 먼저 만날 수 있어요.
             </p>
           </div>
           <div className="empty-state-side">
             <div>
-              <span className="stat-label">What to expect</span>
-              <strong>작업 로그, 작은 발견, 다시 읽고 싶은 문장들</strong>
+              <span className="stat-label">이곳에 남는 것</span>
+              <strong>작업의 결, 작은 발견, 다시 읽고 싶은 문장들</strong>
             </div>
             <p>
               길게 설명하기보다, 다음 작업으로 넘어가기 전 붙잡아 두고 싶은 생각을 차분하게 적어 두는 공간으로
@@ -128,10 +128,10 @@ export default function HomePage() {
       <section id="recent-stories" className="panel recent-section">
         <div className="section-heading recent-heading">
           <div>
-            <p className="eyebrow">Recent stories</p>
-            <h2>최근 발행 글</h2>
+            <p className="eyebrow">이어 읽는 글</p>
+            <h2>최근에 쌓인 문장들</h2>
           </div>
-          <p className="muted">최신 한 편에서 시작하고, 이어지는 글은 archive에서 thread처럼 따라갈 수 있어요.</p>
+          <p className="muted">가장 가까운 한 편에서 시작해, 이어지는 글은 아카이브에서 천천히 따라갈 수 있어요.</p>
         </div>
 
         {posts.length > 0 ? (
@@ -140,7 +140,7 @@ export default function HomePage() {
               {featured ? (
                 <article className="story-row story-row-primary" key={featured.slug}>
                   <div className="story-row-meta">
-                    <span className="status-pill published">latest</span>
+                    <span className="status-pill published">최신</span>
                     <span className="date-stamp">{formatDisplayDate(featured.date)}</span>
                   </div>
                   <div className="story-row-body">
@@ -159,7 +159,7 @@ export default function HomePage() {
                 {recentPosts.map((post) => (
                   <article className="post-card panel panel-subtle" key={post.slug}>
                     <div className="post-card-header">
-                      <span className="status-pill published">published</span>
+                      <span className="status-pill published">발행</span>
                       <span className="date-stamp">{formatDisplayDate(post.date)}</span>
                     </div>
                     <div className="post-card-body">
@@ -180,14 +180,14 @@ export default function HomePage() {
                 ))}
               </div>
             ) : (
-              <p className="recent-footnote">지금은 첫 글이 가장 최신 소식입니다. 다음 발행이 이어지면 이 섹션이 점점 풍성해집니다.</p>
+              <p className="recent-footnote">지금은 첫 글이 가장 가까운 소식입니다. 다음 문장이 놓이면 이 섹션도 조금씩 깊어집니다.</p>
             )}
           </>
         ) : (
           <div className="recent-empty-copy">
             <p>
-              최근 발행 글이 아직 비어 있습니다. 대신 첫 호를 준비하는 동안, 이 홈은 미쿠의 작은 디지털 신문이 어떤
-              결을 지향하는지 먼저 보여줍니다.
+              아직 최근 글은 비어 있습니다. 대신 첫 문장을 준비하는 동안, 이 홈은 39 Notes가 어떤 결을 지향하는지
+              먼저 보여줍니다.
             </p>
           </div>
         )}
