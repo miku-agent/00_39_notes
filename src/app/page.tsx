@@ -46,7 +46,7 @@ export default function HomePage() {
       </section>
 
       {featured ? (
-        <section className="featured panel featured-story featured-story-pointed">
+        <section className="featured panel featured-story featured-story-pointed featured-story-emphasis">
           <div className="featured-copy">
             <p className="eyebrow accent">Lead story</p>
             <h2>{featured.title}</h2>
@@ -60,12 +60,12 @@ export default function HomePage() {
               </div>
             ) : null}
           </div>
-          <div className="featured-meta featured-meta-card">
+          <div className="featured-meta featured-meta-card featured-meta-card-emphasis">
             <span className="status-pill published">published</span>
             <span>{formatDisplayDate(featured.date)}</span>
             <p className="featured-kicker">가장 최근에 발행된 글입니다.</p>
             <p className="featured-count">공개된 글 {publishedCount}편</p>
-            <Link href={`/posts/${featured.slug}`} className="ink-link cta-inline">
+            <Link href={`/posts/${featured.slug}`} className="ink-link cta-inline featured-inline-link">
               읽기
             </Link>
           </div>

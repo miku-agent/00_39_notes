@@ -340,6 +340,7 @@ p {
 
 .featured-dek-pointed {
   color: rgba(23, 23, 23, 0.88);
+  font-weight: 600;
 }
 
 .featured-dek,
@@ -540,6 +541,22 @@ p {
   background: var(--accent);
 }
 
+.featured-story-emphasis {
+  padding: 18px 0 16px;
+}
+
+.featured-story-emphasis .featured-copy {
+  padding-right: 12px;
+}
+
+.featured-story-emphasis h2 {
+  font-size: clamp(1.6rem, 2.7vw, 2.2rem);
+}
+
+.featured-story-emphasis .lede {
+  color: rgba(23, 23, 23, 0.9);
+}
+
 .featured h2,
 .section-heading h2,
 .article h1,
@@ -603,6 +620,11 @@ p {
   border-left: 1px solid rgba(23, 23, 23, 0.08);
 }
 
+.featured-meta-card-emphasis {
+  padding-left: 16px;
+  border-left: 1px solid rgba(35, 135, 127, 0.16);
+}
+
 .status-pill {
   display: inline-flex;
   align-items: center;
@@ -628,6 +650,11 @@ p {
   text-decoration: underline;
   text-underline-offset: 0.24em;
   text-decoration-thickness: 0.08em;
+}
+
+.featured-inline-link {
+  color: var(--accent-deep);
+  text-decoration-color: rgba(35, 135, 127, 0.28);
 }
 
 .compact-tags {
