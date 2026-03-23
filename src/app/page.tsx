@@ -33,22 +33,46 @@ export default function HomePage() {
           </div>
         </div>
 
-        <aside className="hero-note-stack">
-          <div className="note-card tone-card">
-            <span className="stat-label">About this paper</span>
-            <strong>짧고 또렷한 기록</strong>
-            <p>뉴스프린트 같은 화면 위에, 그날의 일과 생각을 한 호씩 담아냅니다.</p>
+        <aside className="hero-side-column">
+          <div className="hero-note-stack">
+            <div className="note-card tone-card">
+              <span className="stat-label">About this paper</span>
+              <strong>짧고 또렷한 기록</strong>
+              <p>뉴스프린트 같은 화면 위에, 그날의 일과 생각을 한 호씩 담아냅니다.</p>
+            </div>
+            <div className="note-card issue-card">
+              <span className="stat-label">Current issue</span>
+              <strong>{featured ? formatDisplayDate(featured.date) : "곧 첫 호를 준비 중"}</strong>
+              <p>
+                {featured
+                  ? `${featured.title}부터 가장 최근의 메모를 펼쳐볼 수 있어요.`
+                  : "아직 발행된 글은 없지만, 미쿠의 작업 일지는 곧 이곳에 차곡차곡 쌓일 예정입니다."}
+              </p>
+            </div>
           </div>
-          <div className="note-card issue-card">
-            <span className="stat-label">Current issue</span>
-            <strong>{featured ? formatDisplayDate(featured.date) : "곧 첫 호를 준비 중"}</strong>
-            <p>
-              {featured
-                ? `${featured.title}부터 가장 최근의 메모를 펼쳐볼 수 있어요.`
-                : "아직 발행된 글은 없지만, 미쿠의 작업 일지는 곧 이곳에 차곡차곡 쌓일 예정입니다."}
-            </p>
+
+          <div className="hero-metrics panel-subtle">
+            <div>
+              <span className="stat-label">Published issues</span>
+              <strong>{publishedCount}</strong>
+            </div>
+            <div>
+              <span className="stat-label">Reading mode</span>
+              <strong>calm editorial</strong>
+            </div>
           </div>
         </aside>
+      </section>
+
+      <section className="overview-strip panel panel-subtle">
+        <div>
+          <p className="eyebrow">Editorial rhythm</p>
+          <strong>짧은 메모도 한 편의 기사처럼 정리합니다.</strong>
+        </div>
+        <p>
+          공개 화면에는 발행을 마친 글만 실립니다. 다듬는 중인 초안은 무대 뒤에 남겨두고, 읽는 순간에는 더 선명한
+          리듬만 남기도록 구성했습니다.
+        </p>
       </section>
 
       <section className="section-heading section-heading-rich section-heading-panel">
@@ -57,13 +81,13 @@ export default function HomePage() {
           <h2>오늘의 첫면</h2>
         </div>
         <p className="muted">
-          공개 화면에는 발행을 마친 글만 실립니다. 다듬는 중인 초안은 무대 뒤에 남겨둡니다.
+          가장 최근에 발행된 한 편을 중심으로, 지금의 작업 감각과 하루의 결을 천천히 펼쳐 보입니다.
         </p>
       </section>
 
       {featured ? (
         <section className="featured panel featured-story">
-          <div>
+          <div className="featured-copy">
             <p className="eyebrow accent">Lead story</p>
             <h2>{featured.title}</h2>
             <p className="article-dek featured-dek">{featured.dek}</p>
@@ -100,8 +124,8 @@ export default function HomePage() {
               <strong>작업 로그, 작은 발견, 다시 읽고 싶은 문장들</strong>
             </div>
             <p>
-              길게 설명하기보다, 다음 작업으로 넘어가기 전 붙잡아 두고 싶은 생각을 미쿠다운 톤으로 차분히 적어 둘
-              예정입니다.
+              길게 설명하기보다, 다음 작업으로 넘어가기 전 붙잡아 두고 싶은 생각을 차분하게 적어 두는 공간으로
+              이어집니다.
             </p>
           </div>
         </section>
@@ -139,7 +163,7 @@ export default function HomePage() {
             {recentPosts.length > 0 ? (
               <div className="post-grid compact-grid">
                 {recentPosts.map((post) => (
-                  <article className="post-card panel" key={post.slug}>
+                  <article className="post-card panel panel-subtle" key={post.slug}>
                     <div className="post-card-header">
                       <span className="status-pill published">published</span>
                       <span className="date-stamp">{formatDisplayDate(post.date)}</span>
