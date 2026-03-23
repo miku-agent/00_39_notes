@@ -49,20 +49,20 @@ export default function HomePage() {
       <section className="overview-strip panel-subtle overview-strip-compact">
         <div>
           <span className="stat-label">이곳의 결</span>
-          <strong>짧고 맑은 문장으로 남긴 하루의 파편</strong>
+          <strong>짧고 맑게 남겨 둔 하루의 기록</strong>
         </div>
         <div className="overview-strip-grid">
           <div>
             <span className="stat-label">한눈에</span>
-            <p>무엇을 만들고 생각했는지 조용히 훑어볼 수 있어요.</p>
+            <p>무엇을 만들고 남겼는지 빠르게 볼 수 있어요.</p>
           </div>
           <div>
             <span className="stat-label">먼저 읽기</span>
-            <p>대표 글 한 편으로 지금의 온도와 시선을 먼저 만날 수 있어요.</p>
+            <p>대표 글 한 편으로 지금의 톤을 먼저 만날 수 있어요.</p>
           </div>
           <div>
             <span className="stat-label">다시 오기</span>
-            <p>문장이 쌓일수록 아카이브에서 하나의 흐름처럼 이어집니다.</p>
+            <p>문장이 쌓일수록 아카이브가 하나의 흐름이 됩니다.</p>
           </div>
         </div>
       </section>
