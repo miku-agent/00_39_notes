@@ -33,7 +33,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <span>{post.tags.length > 0 ? `${post.tags.length} tags` : "single issue"}</span>
           </div>
 
-          <div className="article-title-row article-title-row-minimal">
+          <div className="article-title-row article-title-row-minimal article-title-row-pointed">
             <div>
               <p className="eyebrow accent">Story</p>
               <h1>{post.title}</h1>
