@@ -293,13 +293,14 @@ p {
   font-size: clamp(1.7rem, 3vw, 2.4rem);
   margin: 0;
   line-height: 1.08;
-  max-width: 12ch;
+  max-width: 15ch;
   letter-spacing: -0.03em;
   text-wrap: balance;
+  word-break: keep-all;
 }
 
 .hero-copy-block-pointed .hero-title {
-  max-width: 11ch;
+  max-width: 14ch;
 }
 
 .hero-copy,
@@ -468,6 +469,16 @@ p {
   line-height: 1.28;
 }
 
+.overview-strip strong,
+.header-meta strong {
+  word-break: keep-all;
+}
+
+.overview-strip strong {
+  font-size: clamp(1.1rem, 1.8vw, 1.28rem);
+  line-height: 1.4;
+}
+
 .tone-card {
   background: linear-gradient(180deg, rgba(57, 197, 187, 0.16), rgba(255, 252, 247, 0.88));
 }
@@ -492,7 +503,7 @@ p {
   justify-items: end;
   text-align: right;
   gap: 4px;
-  min-width: 120px;
+  min-width: 180px;
 }
 
 .hero-side-inline strong {
@@ -521,9 +532,9 @@ p {
 
 .overview-strip {
   display: grid;
-  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.6fr);
-  gap: 20px;
-  align-items: center;
+  grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.45fr);
+  gap: 24px;
+  align-items: start;
   padding: 22px 28px;
   margin-bottom: 26px;
 }
