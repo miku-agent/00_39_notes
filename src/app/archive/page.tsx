@@ -31,6 +31,7 @@ export default async function ArchivePage() {
             </div>
             <p className="muted">제목을 누르면 해당 thread 위치로 바로 이동해요.</p>
           </div>
+          <p className="archive-index-summary">latest first · {posts.length} issues</p>
 
           <div className="archive-index-list">
             {posts.map((post, index) => (

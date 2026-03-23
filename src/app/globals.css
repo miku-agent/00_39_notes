@@ -1092,6 +1092,15 @@ pre code {
   margin-bottom: 14px;
 }
 
+.archive-index-summary {
+  margin: 0 0 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 .archive-index-list {
   display: grid;
   gap: 8px;
@@ -1151,6 +1160,11 @@ pre code {
   border-radius: 0;
   background: transparent;
   position: relative;
+  scroll-margin-top: 24px;
+}
+
+.thread-card:target {
+  background: linear-gradient(180deg, rgba(57, 197, 187, 0.04), transparent 78%);
 }
 
 .thread-card::before {
@@ -1409,6 +1423,45 @@ pre code {
 
   .article-nav-links {
     display: grid;
+  }
+
+  .archive-index-summary {
+    margin-bottom: 8px;
+  }
+
+  .archive-index-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .archive-index-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .archive-index-item {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 8px;
+    padding: 12px 10px;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 12px;
+    background: rgba(252, 255, 252, 0.66);
+  }
+
+  .archive-index-item:first-child {
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+  }
+
+  .archive-thread-heading {
+    margin-top: 18px;
+  }
+
+  .thread-card:target {
+    padding-left: 6px;
   }
 
   .article-nav-card {
