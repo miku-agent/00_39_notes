@@ -16,13 +16,18 @@ export default function HomePage() {
       <SiteHeader />
 
       <section className="hero-grid panel hero-panel hero-panel-minimal">
-        <div className="hero-copy-block">
+        <div className="hero-copy-block hero-copy-block-pointed">
           <p className="eyebrow accent">39 Notes</p>
           <h1 className="hero-title">짧게 남기는 작업 노트</h1>
           <p className="hero-copy">하루의 작업과 생각을 조용하게 기록합니다.</p>
+          <div className="hero-actions hero-actions-minimal">
+            <Link href={featured ? `/posts/${featured.slug}` : "#recent-stories"} className="cta-link cta-link-primary">
+              {featured ? "최근 글 읽기" : "글 보러 가기"}
+            </Link>
+          </div>
         </div>
 
-        <aside className="hero-side-column hero-side-column-minimal hero-side-inline">
+        <aside className="hero-side-column hero-side-column-minimal hero-side-inline hero-side-inline-pointed">
           <span className="stat-label">Published</span>
           <strong>{publishedCount}</strong>
           <p>{featured ? formatDisplayDate(featured.date) : "Preparing first post"}</p>
@@ -38,11 +43,11 @@ export default function HomePage() {
       </section>
 
       {featured ? (
-        <section className="featured panel featured-story">
+        <section className="featured panel featured-story featured-story-pointed">
           <div className="featured-copy">
             <p className="eyebrow accent">Lead story</p>
             <h2>{featured.title}</h2>
-            <p className="article-dek featured-dek">{featured.dek}</p>
+            <p className="article-dek featured-dek featured-dek-pointed">{featured.dek}</p>
             <p className="lede">{featured.excerpt}</p>
             {featured.tags.length > 0 ? (
               <div className="tag-row article-tags compact-tags">
